@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./main.css";
 import App from "./сomponents/App";
 
 import { GlobalStyle } from "./сomponents/GlobalStyle";

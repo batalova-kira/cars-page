@@ -14,5 +14,5 @@ export default defineConfig({
     css: {
         modules: false,
     },
-    base: "/react-vite-template",
+    base: "/cars-page",
 });

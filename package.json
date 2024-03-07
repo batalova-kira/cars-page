@@ -1,7 +1,8 @@
 {
-    "name": "react-vite-template",
+    "name": "cars-page",
     "version": "0.1.0",
     "private": true,
+    "homepage": "https://batalova-kira.github.io/cars-page",
     "dependencies": {
         "@reduxjs/toolkit": "^2.2.1",
         "@testing-library/jest-dom": "^5.17.0",
@@ -20,7 +21,7 @@
     "scripts": {
         "deploy": "vite build && gh-pages -d dist",
         "start": "vite",
-        "build": "vite build",
+        "build": "vite build --base=/cars-page/",
         "test": "react-scripts test",
         "eject": "react-scripts eject"
     },
