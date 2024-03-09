@@ -2,6 +2,11 @@ import { createGlobalStyle } from "styled-components";
 import "modern-normalize";
 
 export const GlobalStyle = createGlobalStyle`
+:root {
+  --font-family: "Manrope", sans-serif;
+  --second-family: "Inter", sans-serif;
+}
+
 html {
   box-sizing: border-box;
   width: 100vw;
@@ -30,13 +35,16 @@ img {
   height: auto;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
 .list {
   margin: 0;
   padding: 0;
   list-style: none;
+}
+
+ul, p{
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 `;

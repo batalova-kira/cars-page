@@ -50,25 +50,38 @@ export const CardPrice = styled.p`
 export const WrapperText = styled.div`
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    column-gap: 5px;
+    row-gap: 4px;
+    margin-bottom: 28px;
 `;
 
 export const CardItemText = styled.div`
-    font-family: Manrope;
+    font-family: var(--font-family);
     font-weight: 400;
     font-size: 12px;
-    line-height: 150%;
+    line-height: 1.5;
     color: rgba(18, 20, 23, 0.5);
 `;
 
 export const CardSeparator = styled.div`
-    flex: 0 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-family);
-    font-weight: 400;
-    font-size: 12px;
-    line-height: 150%;
-    color: rgba(18, 20, 23, 0.5);
+    width: 1px;
+    color: rgba(18, 20, 23, 0.1);
+`;
+export const WrapperBtn = styled.div`
+    width: 100%;
+`;
+export const CardMainBtn = styled.button`
+    display: inline-block;
+    text-align: center;
+    border-radius: 12px;
+    border: none;
+    width: 274px;
+    height: 44px;
+    color: white;
+    background: #3470ff;
+
+    &:hover {
+        cursor: pointer;
+        background: #0b44cd;
+    }
 `;
