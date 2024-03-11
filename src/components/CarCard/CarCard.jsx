@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
     CardColorActive,
     CardImg,
@@ -13,8 +13,10 @@ import {
     WrapperText,
     WrapperTitle,
 } from "./CarCard.styled";
+import { ModalContext } from "../../context/ModalContext";
 
 const CarCard = ({ item }) => {
+    const { openModal } = useContext(ModalContext);
     const parts = item.address.split(",");
 
     const city = parts[1].trim();
@@ -25,50 +27,78 @@ const CarCard = ({ item }) => {
     );
 
     const firstTwoWords = item.accessories[0].split(" ").slice(0, 2).join(" ");
-
+    const {
+        img,
+        photoLink,
+        description,
+        make,
+        model,
+        year,
+        rentalPrice,
+        rentalCompany,
+        type,
+        id,
+    } = item;
     return (
         <WrapperCard>
             <WrapperImg>
                 <CardImg
                     src={
-                        item.img ||
-                        item.photoLink ||
+                        img ||
+                        photoLink ||
                         "https://images.pexels.com/photos/1592384"
                     }
-                    alt={item.description}
+                    alt={description}
                 />
             </WrapperImg>
             <WrapperTitle>
                 <CardTitle>
-                    {item.make} <CardColorActive>{item.model}</CardColorActive>,{" "}
-                    {item.year}
+                    {make} <CardColorActive>{model}</CardColorActive>, {year}
                 </CardTitle>
-                <CardPrice>{item.rentalPrice}</CardPrice>
+                <CardPrice>{rentalPrice}</CardPrice>
             </WrapperTitle>
             <WrapperText>
                 <CardItemText>{city}</CardItemText>
                 <CardSeparator>|</CardSeparator>
                 <CardItemText>{country}</CardItemText>
                 <CardSeparator>|</CardSeparator>
-                <CardItemText>{item.rentalCompany}</CardItemText>
+                <CardItemText>{rentalCompany}</CardItemText>
                 <CardSeparator>|</CardSeparator>
                 {isPremium ? (
                     <>
                         <CardItemText>Premium</CardItemText>
-                        <CardItemText>{item.type}</CardItemText>
+                        <CardItemText>{type}</CardItemText>
                     </>
                 ) : (
-                    <CardItemText>{item.type}</CardItemText>
+                    <CardItemText>{type}</CardItemText>
                 )}
                 <CardSeparator>|</CardSeparator>
-                <CardItemText>{item.model}</CardItemText>
+                <CardItemText>{model}</CardItemText>
                 <CardSeparator>|</CardSeparator>
-                <CardItemText>{item.id}</CardItemText>
+                <CardItemText>{id}</CardItemText>
                 <CardSeparator>|</CardSeparator>
                 <CardItemText>{firstTwoWords}</CardItemText>
             </WrapperText>
             <WrapperBtn>
-                <CardMainBtn type="button">Learn more</CardMainBtn>
+                <CardMainBtn
+                    type="button"
+                    onClick={() =>
+                        openModal({
+                            img,
+                            photoLink,
+                            description,
+                            make,
+                            model,
+                            year,
+                            rentalPrice,
+                            rentalCompany,
+                            type,
+                            id,
+                        })
+                    }
+                >
+                    Learn more
+                </CardMainBtn>
             </WrapperBtn>
         </WrapperCard>
     );

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { carsReducer } from "./carsSlice";
+import { carsReducer } from "./cars/carsSlice";
 import {
     persistStore,
     persistReducer,

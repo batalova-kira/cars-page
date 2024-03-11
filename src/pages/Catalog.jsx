@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCars } from "../redux/operation";
-import { selectAllCars } from "../redux/selectors";
+import { fetchCars } from "../redux/cars/operation";
+import { selectAllCars } from "../redux/cars/selectors";
 import CarCard from "../components/CarCard/CarCard";
 import { CatalogItems } from "./Catalog.styled";
+
+import Modal from "../components/Modal/Modal";
+import { ModalContext } from "../context/ModalContext";
 
 const Catalog = () => {
     const cars = useSelector(selectAllCars);
     const dispatch = useDispatch();
+    const { isOpenModal } = useContext(ModalContext);
 
     useEffect(() => {
         dispatch(fetchCars());
@@ -25,6 +29,7 @@ const Catalog = () => {
                     );
                 })}
             </CatalogItems>
+            {isOpenModal && <Modal />}
         </div>
     );
 };
