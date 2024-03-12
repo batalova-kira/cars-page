@@ -42,14 +42,7 @@ const CarCard = ({ item }) => {
     return (
         <WrapperCard>
             <WrapperImg>
-                <CardImg
-                    src={
-                        img ||
-                        photoLink ||
-                        "https://images.pexels.com/photos/1592384"
-                    }
-                    alt={description}
-                />
+                <CardImg src={img || photoLink} alt={description} />
             </WrapperImg>
             <WrapperTitle>
                 <CardTitle>
@@ -80,23 +73,7 @@ const CarCard = ({ item }) => {
                 <CardItemText>{firstTwoWords}</CardItemText>
             </WrapperText>
             <WrapperBtn>
-                <CardMainBtn
-                    type="button"
-                    onClick={() =>
-                        openModal({
-                            img,
-                            photoLink,
-                            description,
-                            make,
-                            model,
-                            year,
-                            rentalPrice,
-                            rentalCompany,
-                            type,
-                            id,
-                        })
-                    }
-                >
+                <CardMainBtn type="button" onClick={() => openModal(item)}>
                     Learn more
                 </CardMainBtn>
             </WrapperBtn>

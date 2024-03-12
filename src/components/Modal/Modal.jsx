@@ -1,12 +1,32 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { ModalContext } from "../../context/ModalContext";
-import { StyledModal } from "./Modal.styled";
+import {
+    CloseIcon,
+    ModalImg,
+    ModalTitle,
+    ModalTitleAccent,
+    StyledModal,
+    WrapperModalImg,
+    WrapperModalText,
+} from "./Modal.styled";
 
 const Modal = () => {
     const { modalData, closeModal } = useContext(ModalContext);
     const [counter, setCounter] = useState(1);
     const inputRef = useRef(null);
     const firstRenderRef = useRef(true);
+    const {
+        img,
+        photoLink,
+        description,
+        make,
+        model,
+        year,
+        rentalPrice,
+        rentalCompany,
+        type,
+        id,
+    } = modalData;
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -54,15 +74,16 @@ const Modal = () => {
     return (
         <StyledModal onClick={handleOverayClick}>
             <div className="modal">
-                <button onClick={closeModal} className="closeBtn">
-                    ❌
-                </button>
-                <h2>Car Details</h2>
-                <div>
-                    <h3>Title: {modalData.make}</h3>
-                    <p>Price: {modalData.type}$</p>
-                    <p>Discount: {modalData.rentalPrice}$</p>
-                </div>
+                <CloseIcon onClick={closeModal}>&times;</CloseIcon>
+                <WrapperModalImg>
+                    <ModalImg src={img || photoLink} alt={description} />
+                </WrapperModalImg>
+                <WrapperModalText>
+                    <ModalTitle>
+                        {make} <ModalTitleAccent>{model}</ModalTitleAccent>,{" "}
+                        {year}
+                    </ModalTitle>
+                </WrapperModalText>
                 {/* <input ref={inputRef} type="text" />
                 <button onClick={handleButtonClick}>Select input</button>
                 <button onClick={() => setCounter((prev) => prev + 1)}>
