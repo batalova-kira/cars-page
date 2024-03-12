@@ -67,6 +67,8 @@ export const ModalImg = styled.img`
 
 export const WrapperModalText = styled.div`
     width: 100%;
+    max-width: 277px;
+    margin-bottom: 14px;
 `;
 
 export const ModalTitle = styled.p`
@@ -75,14 +77,101 @@ export const ModalTitle = styled.p`
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 18px;
-    line-height: 133%;
+    line-height: 1.33;
     color: #121417;
 `;
 
 export const ModalTitleAccent = styled.span`
-    /* font-family: var(--font-family);
+    color: #3470ff;
+`;
+
+export const ModalTextWrapper = styled.p`
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(18, 20, 23, 0.5);
+`;
+
+export const ModalDescriptionWrapper = styled.p`
+    margin-bottom: 24px;
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #121417;
+`;
+
+export const TitleModalFunctionalities = styled.h3`
+    width: 100%;
+    margin-bottom: 8px;
+
+    font-family: var(--font-family);
     font-weight: 500;
-    font-size: 18px;
-    line-height: 133%; */
+    font-size: 14px;
+    line-height: 1.43;
+    color: #121417;
+`;
+
+export const TextModalAccessories = styled.p`
+    width: 100%;
+    margin-bottom: 4px;
+
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(18, 20, 23, 0.5);
+`;
+
+export const TextModalFunctionalities = styled.p`
+    width: 100%;
+    margin-bottom: 4px;
+
+    font-family: var(--font-family);
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    color: rgba(18, 20, 23, 0.5);
+`;
+
+export const RentalModalWrapper = styled.div`
+    width: 100%;
+
+    margin-bottom: 24px;
+`;
+
+export const TitleModalRental = styled.h3`
+    width: 100%;
+    margin-bottom: 8px;
+
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #121417;
+`;
+export const RentalModalWrapperItems = styled.div`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    margin-bottom: 24px;
+`;
+
+export const RentalModalItems = styled.div`
+    border-radius: 35px;
+    padding: 7px 14px;
+
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    color: #363535;
+    background: #f9f9f9;
+`;
+
+export const RentalModalItemsAccent = styled.span`
     color: #3470ff;
 `;

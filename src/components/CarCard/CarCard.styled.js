@@ -55,7 +55,7 @@ export const WrapperText = styled.div`
     margin-bottom: 28px;
 `;
 
-export const CardItemText = styled.div`
+export const CardItemText = styled.p`
     font-family: var(--font-family);
     font-weight: 400;
     font-size: 12px;

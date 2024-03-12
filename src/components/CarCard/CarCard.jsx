@@ -51,26 +51,11 @@ const CarCard = ({ item }) => {
                 <CardPrice>{rentalPrice}</CardPrice>
             </WrapperTitle>
             <WrapperText>
-                <CardItemText>{city}</CardItemText>
-                <CardSeparator>|</CardSeparator>
-                <CardItemText>{country}</CardItemText>
-                <CardSeparator>|</CardSeparator>
-                <CardItemText>{rentalCompany}</CardItemText>
-                <CardSeparator>|</CardSeparator>
-                {isPremium ? (
-                    <>
-                        <CardItemText>Premium</CardItemText>
-                        <CardItemText>{type}</CardItemText>
-                    </>
-                ) : (
-                    <CardItemText>{type}</CardItemText>
-                )}
-                <CardSeparator>|</CardSeparator>
-                <CardItemText>{model}</CardItemText>
-                <CardSeparator>|</CardSeparator>
-                <CardItemText>{id}</CardItemText>
-                <CardSeparator>|</CardSeparator>
-                <CardItemText>{firstTwoWords}</CardItemText>
+                <CardItemText>
+                    {city} | {country} | {rentalCompany} |
+                    {/* {isPremium ? `Premium` {type} : {type}} */}| {model} |{" "}
+                    {id} |{firstTwoWords}
+                </CardItemText>
             </WrapperText>
             <WrapperBtn>
                 <CardMainBtn type="button" onClick={() => openModal(item)}>

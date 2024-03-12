@@ -2,19 +2,29 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import { ModalContext } from "../../context/ModalContext";
 import {
     CloseIcon,
+    ModalDescriptionWrapper,
     ModalImg,
+    ModalTextWrapper,
     ModalTitle,
     ModalTitleAccent,
+    RentalModalItems,
+    RentalModalItemsAccent,
+    RentalModalWrapper,
+    RentalModalWrapperItems,
     StyledModal,
+    TextModalAccessories,
+    TextModalFunctionalities,
+    TitleModalFunctionalities,
+    TitleModalRental,
     WrapperModalImg,
     WrapperModalText,
 } from "./Modal.styled";
 
 const Modal = () => {
     const { modalData, closeModal } = useContext(ModalContext);
-    const [counter, setCounter] = useState(1);
-    const inputRef = useRef(null);
-    const firstRenderRef = useRef(true);
+    // const [counter, setCounter] = useState(1);
+    // const inputRef = useRef(null);
+    // const firstRenderRef = useRef(true);
     const {
         img,
         photoLink,
@@ -22,11 +32,25 @@ const Modal = () => {
         make,
         model,
         year,
-        rentalPrice,
-        rentalCompany,
+        address,
+        fuelConsumption,
+        engineSize,
+        accessories,
+        functionalities,
         type,
         id,
+        rentalConditions,
     } = modalData;
+
+    const parts = address.split(",");
+    const city = parts[1].trim();
+    const country = parts[2].trim();
+
+    const conditionsItems = rentalConditions.split("\n"); // Розділяємо рядок за символом нового рядка
+
+    const minimumAgePhrase = conditionsItems[0];
+    const minimumAgeWord = minimumAgePhrase.split(":")[0].trim();
+    const minimumAgeNumber = minimumAgePhrase.split(":")[1].trim();
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -50,27 +74,6 @@ const Modal = () => {
         }
     };
 
-    useEffect(() => {
-        if (!inputRef.current) return;
-
-        inputRef.current.focus();
-    }, []);
-
-    const handleButtonClick = () => {
-        console.log(inputRef.current);
-        inputRef.current.focus();
-    };
-
-    useEffect(() => {
-        if (firstRenderRef.current === false) {
-            console.log("counter changed", counter);
-        }
-
-        return () => {
-            firstRenderRef.current = false;
-        };
-    }, [counter]);
-
     return (
         <StyledModal onClick={handleOverayClick}>
             <div className="modal">
@@ -83,12 +86,36 @@ const Modal = () => {
                         {make} <ModalTitleAccent>{model}</ModalTitleAccent>,{" "}
                         {year}
                     </ModalTitle>
+                    <ModalTextWrapper>
+                        {city} | {country} | Id: {id} | Year: {year} | Type:{" "}
+                        {type} Fuel Consumption: {fuelConsumption} | Engine
+                        Size: {engineSize}
+                    </ModalTextWrapper>
                 </WrapperModalText>
-                {/* <input ref={inputRef} type="text" />
-                <button onClick={handleButtonClick}>Select input</button>
-                <button onClick={() => setCounter((prev) => prev + 1)}>
-                    Product count: {counter}
-                </button> */}
+                <ModalDescriptionWrapper>{description}</ModalDescriptionWrapper>
+                <TitleModalFunctionalities>
+                    Accessories and functionalities:
+                </TitleModalFunctionalities>
+                <TextModalAccessories>
+                    {accessories[0]} | {accessories[1]} | {accessories[2]}
+                </TextModalAccessories>
+                <TextModalFunctionalities>
+                    {functionalities[0]} | {functionalities[1]} |
+                    {functionalities[2]}
+                </TextModalFunctionalities>
+                <RentalModalWrapper>
+                    <TitleModalRental>Rental Conditions:</TitleModalRental>
+                </RentalModalWrapper>
+                <RentalModalWrapperItems>
+                    <RentalModalItems>
+                        {minimumAgeWord} :&nbsp;
+                        <RentalModalItemsAccent>
+                            {minimumAgeNumber}
+                        </RentalModalItemsAccent>
+                    </RentalModalItems>
+                    <RentalModalItems>{conditionsItems[1]}</RentalModalItems>
+                    <RentalModalItems>{conditionsItems[2]}</RentalModalItems>
+                </RentalModalWrapperItems>
             </div>
         </StyledModal>
     );
