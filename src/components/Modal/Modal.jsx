@@ -134,7 +134,7 @@ const Modal = () => {
                         </RentalModalItemsAccent>
                     </RentalModalItems>
                 </RentalModalWrapperItems>
-                <BtnModal type="button">Rental car</BtnModal>
+                <BtnModal href="tel:+380730000000">Rental car</BtnModal>
             </div>
         </StyledModal>
     );

@@ -63,16 +63,11 @@ export const CardItemText = styled.p`
     color: rgba(18, 20, 23, 0.5);
 `;
 
-export const CardSeparator = styled.div`
-    width: 1px;
-    color: rgba(18, 20, 23, 0.1);
-`;
 export const WrapperBtn = styled.div`
     width: 100%;
 `;
+
 export const CardMainBtn = styled.button`
-    /* display: block; */
-    /* text-align: center; */
     padding: 12px 98px;
     border-radius: 12px;
     border: none;
@@ -83,6 +78,7 @@ export const CardMainBtn = styled.button`
     line-height: 1.43;
     color: #fff;
     background: #3470ff;
+    transition: background-color 0.3s ease;
 
     &:hover {
         cursor: pointer;

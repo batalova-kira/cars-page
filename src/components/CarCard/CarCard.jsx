@@ -5,7 +5,6 @@ import {
     CardItemText,
     CardMainBtn,
     CardPrice,
-    CardSeparator,
     CardTitle,
     WrapperBtn,
     WrapperCard,

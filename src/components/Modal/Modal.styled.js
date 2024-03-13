@@ -178,20 +178,21 @@ export const RentalModalItemsAccent = styled.span`
     color: #3470ff;
 `;
 
-export const BtnModal = styled.button`
+export const BtnModal = styled.a`
+    display: block;
     border-radius: 12px;
     padding: 12px 50px;
     width: 168px;
     height: 44px;
-    border: none;
 
+    text-decoration: none;
     font-family: var(--font-family);
     font-weight: 600;
     font-size: 14px;
     line-height: 143%;
     color: #fff;
     background: #3470ff;
-
+    transition: background-color 0.3s ease;
     &:hover {
         cursor: pointer;
         background: #0b44cd;
