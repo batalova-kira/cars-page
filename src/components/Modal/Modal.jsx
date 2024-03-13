@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { ModalContext } from "../../context/ModalContext";
 import {
+    BtnModal,
     CloseIcon,
     ModalDescriptionWrapper,
     ModalImg,
@@ -19,6 +20,7 @@ import {
     WrapperModalImg,
     WrapperModalText,
 } from "./Modal.styled";
+import { CardMainBtn } from "../CarCard/CarCard.styled";
 
 const Modal = () => {
     const { modalData, closeModal } = useContext(ModalContext);
@@ -40,6 +42,8 @@ const Modal = () => {
         type,
         id,
         rentalConditions,
+        mileage,
+        rentalPrice,
     } = modalData;
 
     const parts = address.split(",");
@@ -51,6 +55,8 @@ const Modal = () => {
     const minimumAgePhrase = conditionsItems[0];
     const minimumAgeWord = minimumAgePhrase.split(":")[0].trim();
     const minimumAgeNumber = minimumAgePhrase.split(":")[1].trim();
+
+    const price = rentalPrice.replace("$", "");
 
     useEffect(() => {
         const handleKeyDown = (event) => {
@@ -115,7 +121,20 @@ const Modal = () => {
                     </RentalModalItems>
                     <RentalModalItems>{conditionsItems[1]}</RentalModalItems>
                     <RentalModalItems>{conditionsItems[2]}</RentalModalItems>
+                    <RentalModalItems>
+                        Mileage:&nbsp;
+                        <RentalModalItemsAccent>
+                            {mileage.toLocaleString()}
+                        </RentalModalItemsAccent>
+                    </RentalModalItems>
+                    <RentalModalItems>
+                        Price:&nbsp;
+                        <RentalModalItemsAccent>
+                            {price}$
+                        </RentalModalItemsAccent>
+                    </RentalModalItems>
                 </RentalModalWrapperItems>
+                <BtnModal type="button">Rental car</BtnModal>
             </div>
         </StyledModal>
     );

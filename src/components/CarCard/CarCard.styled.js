@@ -71,13 +71,17 @@ export const WrapperBtn = styled.div`
     width: 100%;
 `;
 export const CardMainBtn = styled.button`
-    display: inline-block;
-    text-align: center;
+    /* display: block; */
+    /* text-align: center; */
+    padding: 12px 98px;
     border-radius: 12px;
     border: none;
-    width: 274px;
-    height: 44px;
-    color: white;
+
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 1.43;
+    color: #fff;
     background: #3470ff;
 
     &:hover {

@@ -53,8 +53,8 @@ const CarCard = ({ item }) => {
             <WrapperText>
                 <CardItemText>
                     {city} | {country} | {rentalCompany} |
-                    {/* {isPremium ? `Premium` {type} : {type}} */}| {model} |{" "}
-                    {id} |{firstTwoWords}
+                    {isPremium ? " Premium " + type : type} | {model} |{id} |
+                    {firstTwoWords}
                 </CardItemText>
             </WrapperText>
             <WrapperBtn>

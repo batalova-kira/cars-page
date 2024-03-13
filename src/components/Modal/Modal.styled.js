@@ -138,7 +138,7 @@ export const TextModalFunctionalities = styled.p`
 export const RentalModalWrapper = styled.div`
     width: 100%;
 
-    margin-bottom: 24px;
+    margin-bottom: 8px;
 `;
 
 export const TitleModalRental = styled.h3`
@@ -153,15 +153,16 @@ export const TitleModalRental = styled.h3`
 `;
 export const RentalModalWrapperItems = styled.div`
     width: 100%;
+    max-width: 461px;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 10px;
+    gap: 8px;
     margin-bottom: 24px;
 `;
 
 export const RentalModalItems = styled.div`
     border-radius: 35px;
-    padding: 7px 14px;
+    padding: 7px 22px;
 
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
@@ -173,5 +174,26 @@ export const RentalModalItems = styled.div`
 `;
 
 export const RentalModalItemsAccent = styled.span`
+    font-weight: 600;
     color: #3470ff;
+`;
+
+export const BtnModal = styled.button`
+    border-radius: 12px;
+    padding: 12px 50px;
+    width: 168px;
+    height: 44px;
+    border: none;
+
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 143%;
+    color: #fff;
+    background: #3470ff;
+
+    &:hover {
+        cursor: pointer;
+        background: #0b44cd;
+    }
 `;
