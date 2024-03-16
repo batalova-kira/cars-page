@@ -12,16 +12,18 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
+
 const productsConfig = {
     key: "cars",
     storage,
-    whitelist: ["cars"],
+    whitelist: [ "favorite"],
     // blacklist: ['isLoading', 'error'],
 };
 
 export const store = configureStore({
     reducer: {
         cars: persistReducer(productsConfig, carsReducer),
+        // favoriteCars: persistReducer(productsConfig, favoriteCarsReducer),
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

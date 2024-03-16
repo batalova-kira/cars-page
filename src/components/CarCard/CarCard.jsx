@@ -13,9 +13,12 @@ import {
     WrapperTitle,
 } from "./CarCard.styled";
 import { ModalContext } from "../../context/ModalContext";
+import { useDispatch } from "react-redux";
+import { toggleFavorite } from "../../redux/cars/carsSlice";
 
 const CarCard = ({ item }) => {
     const { openModal } = useContext(ModalContext);
+    const dispatch = useDispatch();
     const parts = item.address.split(",");
 
     const city = parts[1].trim();
@@ -38,11 +41,20 @@ const CarCard = ({ item }) => {
         type,
         id,
     } = item;
+
+    const handleClick = (event) => {
+        event.preventDefault();
+        dispatch(toggleFavorite(item));
+    };
+
     return (
         <WrapperCard>
             <WrapperImg>
                 <CardImg src={img || photoLink} alt={description} />
             </WrapperImg>
+            <button type="button" onClick={handleClick}>
+                favorite
+            </button>
             <WrapperTitle>
                 <CardTitle>
                     {make} <CardColorActive>{model}</CardColorActive>, {year}
