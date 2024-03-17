@@ -1,5 +1,5 @@
 export const selectAllCars = (state) => state.cars.items;
-// export const selectIsLoading = (state) => state.contacts.isLoading;
+export const selectFavoriteCars = (state) => state.cars.favorite;
 // export const selectError = (state) => state.contacts.error;
 // export const selectFilter = (state) => state.filter;
 

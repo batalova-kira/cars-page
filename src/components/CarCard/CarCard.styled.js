@@ -1,6 +1,9 @@
 import styled from "styled-components";
+import { FaRegHeart } from "react-icons/fa6";
+import { FaHeart } from "react-icons/fa";
 
 export const WrapperCard = styled.div`
+    position: relative;
     max-width: 274px;
 `;
 
@@ -83,5 +86,48 @@ export const CardMainBtn = styled.button`
     &:hover {
         cursor: pointer;
         background: #0b44cd;
+    }
+`;
+
+export const HeartBtn = styled.button`
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: none;
+    background: none;
+    cursor: pointer;
+`;
+
+export const HeartIcon = styled(FaRegHeart)`
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    /* position: absolute;
+    top: 14px;
+    right: 14px; */
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: #3470ff;
+    }
+`;
+
+export const HeartFullIcon = styled(FaHeart)`
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.8);
+    /* position: absolute;
+    top: 14px;
+    right: 14px; */
+    cursor: pointer;
+
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+        color: #3470ff;
     }
 `;

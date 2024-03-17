@@ -6,6 +6,9 @@ import {
     CardMainBtn,
     CardPrice,
     CardTitle,
+    HeartBtn,
+    HeartFullIcon,
+    HeartIcon,
     WrapperBtn,
     WrapperCard,
     WrapperImg,
@@ -16,7 +19,7 @@ import { ModalContext } from "../../context/ModalContext";
 import { useDispatch } from "react-redux";
 import { toggleFavorite } from "../../redux/cars/carsSlice";
 
-const CarCard = ({ item }) => {
+const CarCard = ({ item, isFavorite }) => {
     const { openModal } = useContext(ModalContext);
     const dispatch = useDispatch();
     const parts = item.address.split(",");
@@ -52,9 +55,9 @@ const CarCard = ({ item }) => {
             <WrapperImg>
                 <CardImg src={img || photoLink} alt={description} />
             </WrapperImg>
-            <button type="button" onClick={handleClick}>
-                favorite
-            </button>
+            <HeartBtn type="button" onClick={handleClick}>
+                {isFavorite ? <HeartFullIcon /> : <HeartIcon />}
+            </HeartBtn>
             <WrapperTitle>
                 <CardTitle>
                     {make} <CardColorActive>{model}</CardColorActive>, {year}

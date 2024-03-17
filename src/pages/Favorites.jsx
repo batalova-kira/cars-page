@@ -1,71 +1,29 @@
+import { useSelector } from "react-redux";
+import { selectFavoriteCars } from "../redux/cars/selectors";
+import { CatalogItems } from "./Catalog.styled";
+import CarCard from "../components/CarCard/CarCard";
+import { FaviroteWrapper } from "./Favorites.styled";
+
 const Favorites = () => {
-    // const dispatch = useDispatch();
-
-    // const isOpenModal = useSelector(selectIsOpenModal);
-    // const products = useSelector(selectProducts);
-    // // const filterTerm = useSelector(selectProductsFilterTerm);
-    // const filteredProducts = useSelector(selectFilteredProducts);
-
-    // const handleDeleteProduct = productId => {
-    //   dispatch(deleteProduct(productId));
-    // };
-
-    // const handleAddProduct = productData => {
-    //   const hasDuplicates = products.some(
-    //     product => product.title === productData.title
-    //   );
-
-    //   if (hasDuplicates) {
-    //     alert(`Oops, produc with title '${productData.title}' already exists!`);
-    //     return;
-    //   }
-
-    //   const finalProduct = {
-    //     ...productData,
-    //     id: nanoid(),
-    //   };
-
-    //   dispatch(addProduct(finalProduct));
-    // };
-
-    // // const filteredProducts = products.filter(
-    // //   ({ price, title }) =>
-    // //     title.toLowerCase().includes(filterTerm.toLowerCase().trim()) ||
-    // //     price.toString().includes(filterTerm.toLowerCase().trim())
-    // // );
-
-    // const sortedProducts = [...filteredProducts].sort(
-    //   (a, b) => b.discount - a.discount
-    // );
+    const cars = useSelector(selectFavoriteCars);
 
     return (
-        <div>
-            {/* <Section title="Add product Form">
-        <ProductForm handleAddProduct={handleAddProduct} />
-      </Section>
-      <Section title="Filter Product">
-        <Filter />
-      </Section>
-      <Section title="Product List">
-        <div className={css.productList}>
-          {sortedProducts.map(product => {
-            return (
-              <Product
-                key={product.id}
-                id={product.id}
-                title={product.title}
-                price={product.price}
-                discount={product.discount}
-                handleDeleteProduct={handleDeleteProduct}
-              />
-            );
-          })}
-        </div>
-      </Section>
-
-      {isOpenModal && <Modal />} */}
-            <h2>Favorites</h2>
-        </div>
+        <FaviroteWrapper>
+            <CatalogItems>
+                {cars.map((item) => {
+                    return (
+                        <li key={item.id}>
+                            <CarCard
+                                item={item}
+                                isFavorite={cars.some(
+                                    (favorite) => favorite.id === item.id
+                                )}
+                            />
+                        </li>
+                    );
+                })}
+            </CatalogItems>
+        </FaviroteWrapper>
     );
 };
 
