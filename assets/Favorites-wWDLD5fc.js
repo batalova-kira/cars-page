@@ -1,0 +1,1 @@
+import{u as t,a as o,j as r}from"./index-CxQjsTLI.js";import{a as i,C as c,b as d}from"./Catalog.styled-dlmw5Ejb.js";const n=t.div``,u=()=>{const a=o(i);return r.jsx(n,{children:r.jsx(c,{children:a.map(s=>r.jsx("li",{children:r.jsx(d,{item:s,isFavorite:a.some(e=>e.id===s.id)})},s.id))})})};export{u as default};
