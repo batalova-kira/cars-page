@@ -105,9 +105,6 @@ export const HeartBtn = styled.button`
 export const HeartIcon = styled(FaRegHeart)`
     font-size: 18px;
     color: rgba(255, 255, 255, 0.8);
-    /* position: absolute;
-    top: 14px;
-    right: 14px; */
     cursor: pointer;
 
     transition: all 0.3s ease-in-out;
@@ -120,9 +117,6 @@ export const HeartIcon = styled(FaRegHeart)`
 export const HeartFullIcon = styled(FaHeart)`
     font-size: 18px;
     color: rgba(255, 255, 255, 0.8);
-    /* position: absolute;
-    top: 14px;
-    right: 14px; */
     cursor: pointer;
 
     transition: all 0.3s ease-in-out;

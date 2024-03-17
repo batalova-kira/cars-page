@@ -1,21 +1,20 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { Container } from "./Layout.styled";
+import { Container, Header, StyledNavLink } from "./Layout.styled";
 
 const Layout = ({ children }) => {
     return (
         <Container>
-            <header>
-                <NavLink className="header-link" to="/">
+            <Header>
+                <StyledNavLink className="header-link" to="/">
                     Home
-                </NavLink>
-                <NavLink className="header-link" to="/catalog">
+                </StyledNavLink>
+                <StyledNavLink className="header-link" to="/catalog">
                     Catalog
-                </NavLink>
-                <NavLink className="header-link" to="/favorites">
+                </StyledNavLink>
+                <StyledNavLink className="header-link" to="/favorites">
                     Favorites
-                </NavLink>
-            </header>
+                </StyledNavLink>
+            </Header>
             <main>{children}</main>
         </Container>
     );

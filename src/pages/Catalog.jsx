@@ -25,7 +25,6 @@ const Catalog = () => {
 
     return (
         <div>
-            <p>Catalog</p>
             <CatalogItems>
                 {cars.slice(0, visibleCars).map((item) => {
                     return (
