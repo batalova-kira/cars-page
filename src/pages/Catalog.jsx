@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCars, fetchMore } from "../redux/cars/operation";
 import {
@@ -19,20 +19,28 @@ const Catalog = () => {
     const { isOpenModal } = useContext(ModalContext);
     const currentPage = useSelector(selectCurrentPage);
     const favoriteCars = useSelector(selectFavoriteCars);
-
+    const [selectedMake, setSelectedMake] = useState("");
     useEffect(() => {
         dispatch(fetchCars());
-    }, [dispatch]);
+    }, [dispatch, selectedMake]);
 
     const loadMore = () => {
         dispatch(fetchMore(currentPage + 1));
     };
 
+    const filteredCars = selectedMake
+        ? cars.filter(
+              (car) =>
+                  car.make.trim().toLowerCase() ===
+                  selectedMake.trim().toLowerCase()
+          )
+        : cars;
+
     return (
         <div>
-            <MakesFilter />
+            <MakesFilter onSelectMake={setSelectedMake} />
             <CatalogItems>
-                {cars.map((item) => {
+                {filteredCars.map((item) => {
                     return (
                         <li key={item.id}>
                             <CarCard

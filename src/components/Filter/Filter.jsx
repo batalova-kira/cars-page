@@ -1,21 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import makes from "../../makes.json";
+import Select from "react-select";
 
-const MakesFilter = () => {
-    const cars = makes.map((car) => {
+const MakesFilter = ({ onSelectMake }) => {
+    const [selectedOption, setSelectedOption] = useState("");
+
+    const options = makes.map((option) => {
         return {
-            value: car,
-            label: car,
-            name: "make",
+            value: option,
+            label: option,
         };
     });
 
+    const handleChange = (selectedOption) => {
+        setSelectedOption(selectedOption);
+        onSelectMake(selectedOption.value);
+    };
+
     return (
-        <select>
-            {cars.map((car) => (
-                <option key={car.value}>{car.value}</option>
-            ))}
-        </select>
+        <Select
+            value={selectedOption}
+            onChange={handleChange}
+            options={options}
+            placeholder="Select make..."
+        />
     );
 };
 
