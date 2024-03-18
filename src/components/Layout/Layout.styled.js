@@ -10,7 +10,7 @@ export const Header = styled.header`
     display: flex;
     justify-content: center;
     gap: 16px;
-    margin-bottom: 24px;
+    margin-bottom: 40px;
 `;
 
 export const StyledNavLink = styled(NavLink)`
@@ -31,6 +31,6 @@ export const StyledNavLink = styled(NavLink)`
         cursor: pointer;
         background: #fff;
         color: #0b44cd;
-        box-shadow: 0px 2px 20px 10px #97b1bf;
+        box-shadow: 0px 2px 5px 3px #97b1bf;
     }
 `;

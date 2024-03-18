@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCars } from "./operation";
+import { fetchCars, fetchMore } from "./operation";
 
 const handlePending = (state) => {
     state.isLoading = true;
 };
 
-const handleRejected = (state, action) => {
+const handleRejected = (state, { payload }) => {
     state.isLoading = false;
-    state.error = action.payload;
+    state.error = payload;
 };
 
 const initialState = {
@@ -15,34 +15,43 @@ const initialState = {
     favorite: [],
     isLoading: false,
     error: null,
+    currentPage: 1,
 };
 
 const carsSlice = createSlice({
     name: "cars",
     initialState,
     reducers: {
-        toggleFavorite: (state, action) => {
-            const carId = action.payload.id;
+        toggleFavorite: (state, { payload }) => {
+            const carId = payload.id;
             const index = state.favorite.findIndex((car) => car.id === carId);
             if (index === -1) {
-                state.favorite.push(action.payload);
-                console.log(1);
+                state.favorite.push(payload);
             } else {
                 state.favorite.splice(index, 1);
-                console.log(2);
             }
+        },
+        setCurrentPage(state, { payload }) {
+            state.currentPage = payload;
         },
     },
     extraReducers: (builder) => {
         builder
             .addCase(fetchCars.pending, handlePending)
-            .addCase(fetchCars.fulfilled, (state, action) => {
+            .addCase(fetchCars.fulfilled, (state, { payload }) => {
                 state.isLoading = false;
                 state.error = null;
-                state.items = action.payload;
+                state.items = payload;
             })
-            .addCase(fetchCars.rejected, handleRejected);
+            .addCase(fetchCars.rejected, handleRejected)
+            .addCase(fetchMore.pending, handlePending)
+            .addCase(fetchMore.fulfilled, (state, { payload }) => {
+                state.isLoading = false;
+                state.items = [...state.items, ...payload];
+                state.currentPage += 1;
+            })
+            .addCase(fetchMore.rejected, handleRejected);
     },
 });
-export const { toggleFavorite } = carsSlice.actions;
+export const { toggleFavorite, setCurrentPage } = carsSlice.actions;
 export const carsReducer = carsSlice.reducer;

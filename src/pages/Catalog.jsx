@@ -1,7 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCars } from "../redux/cars/operation";
-import { selectAllCars, selectFavoriteCars } from "../redux/cars/selectors";
+import { fetchCars, fetchMore } from "../redux/cars/operation";
+import {
+    selectAllCars,
+    selectCurrentPage,
+    selectFavoriteCars,
+} from "../redux/cars/selectors";
 import CarCard from "../components/CarCard/CarCard";
 import { BtnPagination, CatalogItems } from "./Catalog.styled";
 
@@ -12,7 +16,7 @@ const Catalog = () => {
     const cars = useSelector(selectAllCars);
     const dispatch = useDispatch();
     const { isOpenModal } = useContext(ModalContext);
-    const [visibleCars, setVisibleCars] = useState(12);
+    const currentPage = useSelector(selectCurrentPage);
     const favoriteCars = useSelector(selectFavoriteCars);
 
     useEffect(() => {
@@ -20,13 +24,13 @@ const Catalog = () => {
     }, [dispatch]);
 
     const loadMore = () => {
-        setVisibleCars((prev) => prev + 12);
+        dispatch(fetchMore(currentPage + 1));
     };
 
     return (
         <div>
             <CatalogItems>
-                {cars.slice(0, visibleCars).map((item) => {
+                {cars.map((item) => {
                     return (
                         <li key={item.id}>
                             <CarCard
@@ -39,7 +43,7 @@ const Catalog = () => {
                     );
                 })}
             </CatalogItems>
-            {cars.length > visibleCars && (
+            {currentPage <= 3 && (
                 <BtnPagination onClick={loadMore}>Load More</BtnPagination>
             )}
             {isOpenModal && <Modal />}
