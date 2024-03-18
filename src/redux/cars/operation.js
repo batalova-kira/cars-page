@@ -8,7 +8,6 @@ export const fetchCars = createAsyncThunk(
     async (_, thunkAPI) => {
         try {
             const { data } = await axios.get("?page=1&limit=12");
-            console.log(data);
             return data;
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message);
@@ -21,7 +20,6 @@ export const fetchMore = createAsyncThunk(
     async (currentPage, thunkAPI) => {
         try {
             const { data } = await axios.get(`?page=${currentPage}&limit=12`);
-            console.log(data);
             return data;
         } catch (e) {
             return thunkAPI.rejectWithValue(e.message);

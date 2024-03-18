@@ -11,19 +11,19 @@ import {
     REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
+// import { makesReducer } from "./cars/makesSlice";
 
-
-const productsConfig = {
+const carsConfig = {
     key: "cars",
     storage,
-    whitelist: [ "favorite"],
+    whitelist: ["favorite"],
     // blacklist: ['isLoading', 'error'],
 };
 
 export const store = configureStore({
     reducer: {
-        cars: persistReducer(productsConfig, carsReducer),
-        // favoriteCars: persistReducer(productsConfig, favoriteCarsReducer),
+        cars: persistReducer(carsConfig, carsReducer),
+        // makes: persistReducer(carsConfig, makesReducer),
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({

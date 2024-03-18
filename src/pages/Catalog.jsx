@@ -11,6 +11,7 @@ import { BtnPagination, CatalogItems } from "./Catalog.styled";
 
 import Modal from "../components/Modal/Modal";
 import { ModalContext } from "../context/ModalContext";
+import MakesFilter from "../components/Filter/Filter";
 
 const Catalog = () => {
     const cars = useSelector(selectAllCars);
@@ -29,6 +30,7 @@ const Catalog = () => {
 
     return (
         <div>
+            <MakesFilter />
             <CatalogItems>
                 {cars.map((item) => {
                     return (
@@ -43,7 +45,7 @@ const Catalog = () => {
                     );
                 })}
             </CatalogItems>
-            {currentPage <= 3 && (
+            {currentPage < 3 && (
                 <BtnPagination onClick={loadMore}>Load More</BtnPagination>
             )}
             {isOpenModal && <Modal />}
