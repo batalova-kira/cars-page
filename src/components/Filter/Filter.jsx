@@ -37,8 +37,6 @@ const MakesFilter = ({ onSelectMake }) => {
         }),
         option: (provided, state) => ({
             ...provided,
-            // border: "1px solid rgba(18, 20, 23, 0.05)",
-            // borderRadius: "14px",
             backgroundColor: "#fff",
             color: " rgba(18, 20, 23, 0.2)",
         }),
