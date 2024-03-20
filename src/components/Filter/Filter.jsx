@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import makes from "../../makes.json";
 import Select from "react-select";
-import { FilterLabel, FilterWrapper, SearchBtn } from "./Filter.styled";
+import {
+    FilterLabel,
+    FilterWrapper,
+    SearchBtn,
+    SelectWrapper,
+} from "./Filter.styled";
 
 const MakesFilter = ({ onSelectMake }) => {
     const [selectedOption, setSelectedOption] = useState("");
@@ -51,7 +56,7 @@ const MakesFilter = ({ onSelectMake }) => {
 
     return (
         <FilterWrapper>
-            <div>
+            <SelectWrapper>
                 <FilterLabel>Car brand</FilterLabel>
                 <Select
                     styles={customStyles}
@@ -60,7 +65,7 @@ const MakesFilter = ({ onSelectMake }) => {
                     options={options}
                     placeholder="Enter the text"
                 />
-            </div>
+            </SelectWrapper>
             <SearchBtn type="submit">Search</SearchBtn>
         </FilterWrapper>
     );

@@ -8,14 +8,12 @@ export const FilterWrapper = styled.div`
     margin-bottom: 50px;
 `;
 export const SelectWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: relative;
 `;
 
 export const FilterLabel = styled.span`
     position: absolute;
-    top: -8px;
+    top: -22px;
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 14px;
