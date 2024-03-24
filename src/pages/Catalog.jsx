@@ -12,6 +12,7 @@ import { BtnPagination, CatalogItems } from "./Catalog.styled";
 import Modal from "../components/Modal/Modal";
 import { ModalContext } from "../context/ModalContext";
 import MakesFilter from "../components/Filter/Filter";
+import { useSearchParams } from "react-router-dom";
 
 const Catalog = () => {
     const cars = useSelector(selectAllCars);
@@ -20,9 +21,17 @@ const Catalog = () => {
     const currentPage = useSelector(selectCurrentPage);
     const favoriteCars = useSelector(selectFavoriteCars);
     const [selectedMake, setSelectedMake] = useState("");
+    const [searchParams] = useSearchParams();
+
     useEffect(() => {
         dispatch(fetchCars());
-    }, [dispatch, selectedMake]);
+    }, [dispatch]);
+
+    useEffect(() => {
+        const params = new URLSearchParams(searchParams);
+        const selectedMake = params.get("make");
+        setSelectedMake(selectedMake || "");
+    }, [searchParams]);
 
     const loadMore = () => {
         dispatch(fetchMore(currentPage + 1));
@@ -31,8 +40,10 @@ const Catalog = () => {
     const filteredCars = selectedMake
         ? cars.filter(
               (car) =>
-                  car.make.trim().toLowerCase() ===
-                  selectedMake.trim().toLowerCase()
+                  car.make.toLowerCase() ===
+                  (typeof selectedMake === "string"
+                      ? selectedMake.toLowerCase()
+                      : "")
           )
         : cars;
 
