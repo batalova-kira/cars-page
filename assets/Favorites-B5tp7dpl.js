@@ -1,0 +1,1 @@
+import{u as o,c as i,r as c,M as n,j as s}from"./index-DjXumRYS.js";import{b as d,C as l,c as x,M as p}from"./Modal-Brz5jSfN.js";const u=o.div``,m=()=>{const r=i(d),{isOpenModal:t}=c.useContext(n);return s.jsxs(u,{children:[s.jsx(l,{children:r.map(a=>s.jsx("li",{children:s.jsx(x,{item:a,isFavorite:r.some(e=>e.id===a.id)})},a.id))}),t&&s.jsx(p,{})]})};export{m as default};
