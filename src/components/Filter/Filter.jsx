@@ -12,16 +12,16 @@ import { useSearchParams } from "react-router-dom";
 
 const MakesFilter = ({ cars, onSelectMake }) => {
     const [selectedOption, setSelectedOption] = useState("");
-    const [priceFilter, setPriceFilter] = useState("");
+    // const [priceFilter, setPriceFilter] = useState("");
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         const params = new URLSearchParams(searchParams);
         const selectedMake = params.get("make");
-        const selectedPrice = params.get("price");
+        // const selectedPrice = params.get("price");
 
         setSelectedOption(selectedMake || "");
-        setPriceFilter(selectedPrice || "");
+        // setPriceFilter(selectedPrice || "");
     }, [searchParams]);
 
     const options = makes.map((option) => {
@@ -33,21 +33,21 @@ const MakesFilter = ({ cars, onSelectMake }) => {
 
     const handleChange = (selectedOption) => {
         setSelectedOption(selectedOption);
-        onSelectMake(selectedOption.value);
     };
 
-    const handlePriceChange = (event) => {
-        setPriceFilter(event.target.value);
-    };
+    // const handlePriceChange = (event) => {
+    //     setPriceFilter(event.target.value);
+    // };
 
     const handleSearch = () => {
         const params = new URLSearchParams();
         if (selectedOption !== "") {
             params.set("make", selectedOption.value);
         }
-        if (priceFilter !== "") {
-            params.set("price", priceFilter);
-        }
+        // if (priceFilter !== "") {
+        //     params.set("price", priceFilter);
+        // }
+        onSelectMake(selectedOption.value);
         setSearchParams(params);
     };
 
@@ -63,15 +63,14 @@ const MakesFilter = ({ cars, onSelectMake }) => {
                     placeholder="Enter the text"
                 />
             </SelectWrapper>
-            <SelectWrapper>
+            {/* <SelectWrapper>
                 <FilterLabel>Price</FilterLabel>
-                <input
-                    type="text"
+                <Select
                     value={priceFilter}
                     onChange={handlePriceChange}
                     placeholder="Enter the price"
                 />
-            </SelectWrapper>
+            </SelectWrapper> */}
             <SearchBtn onClick={handleSearch}>Search</SearchBtn>
         </FilterWrapper>
     );
