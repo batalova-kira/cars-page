@@ -9,20 +9,18 @@ import {
     customStyles,
 } from "./Filter.styled";
 import { useSearchParams } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { updateFilterFromURL } from "../../redux/filter/filterSlice";
 
 const MakesFilter = ({ cars, onSelectMake }) => {
     const [selectedOption, setSelectedOption] = useState("");
     // const [priceFilter, setPriceFilter] = useState("");
     const [searchParams, setSearchParams] = useSearchParams();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        const params = new URLSearchParams(searchParams);
-        const selectedMake = params.get("make");
-        // const selectedPrice = params.get("price");
-
-        setSelectedOption(selectedMake || "");
-        // setPriceFilter(selectedPrice || "");
-    }, [searchParams]);
+        dispatch(updateFilterFromURL());
+    }, [dispatch]);
 
     const options = makes.map((option) => {
         return {
